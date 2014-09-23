@@ -56,9 +56,8 @@ app.get('/api/article', function(req, res) {
     });
 });*/
 
-app.get('/', function(req, res){
-  res.send('hello world');
-});
+
+
 app.get('/polls', function(req, res){
   
 });
