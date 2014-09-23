@@ -9,7 +9,7 @@ var dbConfig = {
     host: 'localhost',
     user: 'ama331',
     password: '55239490',
-    database: 'polls',
+    database: 'assignment2',
     charset: 'utf8'
   }
 };
@@ -42,25 +42,40 @@ var bookshelf = app.get('bookshelf');
  
 // {our model definition code goes here}
 
-/*var Vote = bookshelf.Model.extend({
+var Poll = bookshelf.Model.extend({
+  tableName: 'Polls'
+});
+
+var Vote = bookshelf.Model.extend({
   tableName: 'Votes'
 });
 
-app.get('/api/article', function(req, res) {
-  new Article().fetchAll()
-    .then(function(articles) {
-      res.send(articles.toJSON());
-    }).catch(function(error) {
-      console.log(error);
-      res.send('An error occured');
-    });
-});*/
-
-
-
-app.get('/polls', function(req, res){
-  
+app.use(function(err, req, res, next){
+console.error(err.stack);
+res.send(500, 'Something broke!');
 });
+
+app.get('/pollsteste',function(req,res){
+  new Poll().fetchAll()
+  .then(function(polls){
+    res.send(polls.toJSON());
+  }).catch(function(error){
+    console.log(error);
+    res.send('An error occured');
+  });
+});
+
+app.get('/polls', function(req, res) { 
+  res.json({ 
+    id: 1, 
+    title: "Brush teeth", 
+    question: "How many times do you brush your teeth in a day?", 
+    option1: 1, 
+    option2: 2, 
+    option3: 3, 
+    option4: 4, 
+    option5: 5 })
+  .status(200); });
 app.get('/polls/:id', function(req, res){
   
 });
