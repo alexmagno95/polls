@@ -55,29 +55,38 @@ console.error(err.stack);
 res.send(500, 'Something broke!');
 });
 
-app.get('/pollsteste',function(req,res){
+app.get('/polls',function(req,res){
   new Poll().fetchAll()
   .then(function(polls){
     res.send(polls.toJSON());
   }).catch(function(error){
     console.log(error);
-    res.send('An error occured');
+    res.send('Error retrieving Polls');
   });
 });
 
-app.get('/polls', function(req, res) { 
-  res.json({ 
-    id: 1, 
-    title: "Brush teeth", 
-    question: "How many times do you brush your teeth in a day?", 
-    option1: 1, 
-    option2: 2, 
-    option3: 3, 
-    option4: 4, 
-    option5: 5 })
-  .status(200); });
-app.get('/polls/:id', function(req, res){
-  
+app.get('/polls/:id',function(req,res){
+  var id = req.params.id;
+  new Poll().where('id', id)
+  .fetch()
+  .then(function(poll){
+    res.send(poll.toJSON());
+  }).catch(function(error){
+    console.log(error);
+    res.send('Error retrieving Poll');
+  });
+});
+
+app.get('/votes/:pollId',function(req,res){
+  var pollId = req.params.pollId;
+  new Vote().where('pollId', pollId)
+  .fetch()
+  .then(function(vote){
+    res.send(vote.toJSON());
+  }).catch(function(error){
+    console.log(error);
+    res.send('Error retrieving Poll');
+  });
 });
  
 app.listen(3000, function() {
