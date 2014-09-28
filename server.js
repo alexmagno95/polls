@@ -75,6 +75,7 @@ app.get('/polls/:id',function(req,res){
     console.log(error);
     res.send('Error retrieving Poll');
   });
+});
 
 app.get('/polls', function(req, res) {
   res.json([{
