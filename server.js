@@ -75,6 +75,19 @@ app.get('/polls/:id',function(req,res){
     console.log(error);
     res.send('Error retrieving Poll');
   });
+
+app.get('/polls', function(req, res) {
+  res.json([{
+    id: 1,
+    title: "Brush teeth",
+    question: "How many times you brush your teeth in a day?",
+    option1: 1,
+    option2: 2,
+    option3: 3,
+    option4: 4,
+    option5: 5
+  }]).status(200)
+
 });
 
 app.get('/votes/:pollId',function(req,res){

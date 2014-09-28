@@ -1,4 +1,4 @@
-var polls = angular.module('polls', ['ngRoute']);
+var polls = angular.module('polls', ['ngRoute', 'ngResource']);
 
 polls.config(['$routeProvider', function($routeProvider) { 
   $routeProvider
