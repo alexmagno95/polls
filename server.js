@@ -77,19 +77,19 @@ app.get('/polls/:id',function(req,res){
   });
 });
 
-app.get('/polls', function(req, res) {
-  res.json([{
-    id: 1,
-    title: "Brush teeth",
-    question: "How many times you brush your teeth in a day?",
-    option1: 1,
-    option2: 2,
-    option3: 3,
-    option4: 4,
+app.get('/polls', function(req, res) { 
+  res.json({ 
+    id: 1, 
+    title: 'Brush teeth',
+    question: 'How many times you brush your teeth in a day?',
+    option1: 1, 
+    option2: 2, 
+    option3: 3, 
+    option4: 4, 
     option5: 5
-  }]).status(200)
-
+  }).status(200) 
 });
+
 
 app.get('/votes/:pollId',function(req,res){
   var pollId = req.params.pollId;
@@ -102,6 +102,22 @@ app.get('/votes/:pollId',function(req,res){
     res.send('Error retrieving Poll');
   });
 });
+
+app.post("/votes/:pollId/:vote", function(req, res) {
+  var vote = new Vote({
+    ip:'123.122.2.5',
+    pollID:req.params.pollId,
+    answer:req.params.vote 
+  });
+    vote.save().then(function(saved_vote){
+      res.send(saved_vote.toJSON());
+      }).catch(function(error){
+      console.log(error);
+      res.send('Error saving vote');
+    });
+});
+
+
  
 app.listen(3000, function() {
   console.log('Express started at port 3000');

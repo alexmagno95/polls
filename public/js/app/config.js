@@ -9,9 +9,9 @@ polls.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'templates/summary.html',
     controller: 'SummaryCtrl'
   })
-  . when('/vote', { 
-    templateUrl: 'templates/vote.html',
-    controller: 'VoteCtrl'
+  . when('/polls/:id', { 
+    templateUrl: 'templates/poll.html',
+    controller: 'PollCtrl'
   })
   . otherwise({ redirectTo: '/' });
 } ]);
