@@ -4,9 +4,7 @@ polls.controller('SummaryCtrl', ['$scope', 'Poll', function($scope, Poll) {
     ( Poll.getAll() ).$promise.then(function(data) {
       $scope.polls = data;
     });
-    $scope.render()
-  },
-
-  
-
+    
+  };
+$scope.render();
 }]);
