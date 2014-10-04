@@ -1,10 +1,14 @@
 <script src="js/app/controllers/poll.js"></script> 
 <div ng-controller="PollCtrl" > 
   <h3>{{poll.title}}</h3> 
-  <p class="question">{{poll.question}}</p>
-  <ul> 
-    <li> 
-      <button>{{poll.option1}}</button> 
-    </li> 
-  </ul> 
+  <p class="question">{{poll.question}}</p>  
+  <form name="myForm" ng-controller="PollCtrl">
+    <input type="radio" ng-model="poll" ng-value="{{poll.option1}}"> {{poll.option1}} <br/>
+    <input type="radio" ng-model="poll" ng-value="{{poll.option2}}"> {{poll.option2}} <br/>
+    <input type="radio" ng-model="poll" ng-value="{{poll.option3}}"> {{poll.option3}} <br/>
+    <input type="radio" ng-model="poll" ng-value="{{poll.option4}}"> {{poll.option4}} <br/>
+    <input type="radio" ng-model="poll" ng-value="{{poll.option5}}"> {{poll.option5}} <br/>
+    <tt>color = {{poll | json}}</tt><br/>
+  </form>
 </div>
+

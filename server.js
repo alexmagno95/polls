@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var Promise = require('bluebird');
+var mongoose = require('mongoose');
  
 var dbConfig = {
   client: 'mysql',
@@ -23,6 +24,8 @@ var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 };
+
+//mongoose.connect('mongodb:/')
 
 app.use(express.static(require("path").join(__dirname, "public")));
 
