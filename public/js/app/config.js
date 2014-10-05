@@ -1,18 +1,25 @@
 var polls = angular.module('polls', ['ngRoute', 'ngResource']);
 
-
 polls.config(['$routeProvider', function($routeProvider) { 
   $routeProvider
   . when('/', 
     { templateUrl: 'templates/about.html' 
   })
-  . when('/polls', { 
+  . when('/polls', {
     templateUrl: 'templates/polls.html',
-    controller: 'SummaryCtrl'
+    controller: 'PollCtrl'
   })
-  . when('/polls/:id', { 
+  . when('/polls/create', {
+    templateUrl: 'templates/create.html',
+    controller: 'PollCtrl'
+  })
+  . when('/polls/:id', {
     templateUrl: 'templates/poll.html',
     controller: 'PollCtrl'
+  })
+  . when('/polls/:id/vote', {
+    templateUrl: 'templates/vote.html',
+    controller: 'VoteCtrl'
   })
   . otherwise({ redirectTo: '/' });
 } ]);

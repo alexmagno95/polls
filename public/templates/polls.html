@@ -1,8 +1,13 @@
-<div ng-controller="SummaryCtrl">
+<div ng-controller="PollCtrl" ng-init="renderAll()">
   
   <ul>
     <li ng-repeat="poll in polls">
-      {{poll}}
+      {{poll.title}}<br/>
+      {{poll.question}}<br/>
+      {{choices}}
+      <div ng-repeat="choice in poll.choices">
+          {{choice}}
+      </div>
     </li>
   </ul>
 

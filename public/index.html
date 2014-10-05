@@ -3,21 +3,24 @@
   <head>
     <meta charset="utf-8"> 
     <title>Polls</title> 
-    <script src="js/vendor/angular/angular.js"></script> 
-    <script src="js/vendor/angular/angular-route.js"></script> 
-    <script src="js/vendor/angular/angular-resource.js"></script> 
-    <script src="js/app/config.js"></script> 
-    <script src="js/app/resources/poll.js"></script> 
-    <script src="js/app/controllers/summary.js"></script> 
-    <script src="js/app/controllers/vote.js"></script> 
-    <script src="js/app/controllers/polls.js"></script> 
-    <script src="js/app/controllers/summary.js"></script>
+    
+    <script src="js/vendor/angular/angular.js"></script>
+    <script src="js/vendor/angular/angular-route.js"></script>
+    <script src="js/vendor/angular/angular-resource.js"></script>
+
+    <script src="js/app/config.js"></script>
+
+    <script src="js/app/resources/poll.js"></script>
+
+    <script src="js/app/controllers/poll.js"></script> 
+    <script src="js/app/controllers/vote.js"></script>
+
+    <link rel="stylesheet" href="css/vendor/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
   </head>
-  <body> 
-    <div ng-view>
-
-    </div ng-view>
-
-    <h1>Hello World!</h1>
+  <body>
+    <div class="container">
+      <ng-view></ng-view>
+    </div>
   </body> 
 </html>
