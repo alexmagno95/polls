@@ -19,4 +19,5 @@ $scope.save = function() {
   Poll.save({ poll: $scope.poll });
 };
 
-} ]);
+
+}]);

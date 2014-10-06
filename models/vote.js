@@ -1,7 +1,7 @@
 module.exports = function(mongoose) {
   
   var VoteSchema = new mongoose.Schema({
-    poll: {
+    pollId: {
       "type": String,
       "default": ""
     },

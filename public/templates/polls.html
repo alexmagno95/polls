@@ -2,13 +2,14 @@
   
   <ul>
     <li ng-repeat="poll in polls">
+      <a href="/#polls/{{poll._id}}">{{poll._id}}</a> <br/>
       {{poll.title}}<br/>
-      {{poll.question}}<br/>
-      {{choices}}
-      <div ng-repeat="choice in poll.choices">
-          {{choice}}
-      </div>
+      {{poll.question}}<br/> 
+    <div ng-repeat="choice in poll.choices">
+        {{choice}}
+    </div>        
     </li>
+
   </ul>
 
 </div>
