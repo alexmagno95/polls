@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8"> 
     <title>Polls</title> 
+
     <script src="js/app/config.js"></script>
 
-    
     <script src="js/vendor/angular/angular.js"></script>
     <script src="js/vendor/angular/angular-route.js"></script>
     <script src="js/vendor/angular/angular-resource.js"></script>
@@ -21,7 +21,16 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
+
     <div class="container">
+      <header class="header">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="#/">Home</a></li>
+          <li><a href="#/about">About</a></li>
+          <li class="active"><a href="#/polls/create">Create New Poll</a></li>
+        </ul>
+      </header>
+
       <ng-view></ng-view>
     </div>
   </body> 

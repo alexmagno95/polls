@@ -2,12 +2,12 @@ var polls = angular.module('polls', ['ngRoute', 'ngResource']);
 
 polls.config(['$routeProvider', function($routeProvider) { 
   $routeProvider
-  . when('/', 
-    { templateUrl: 'templates/about.html' 
-  })
-  . when('/polls', {
-    templateUrl: 'templates/polls.html',
+  . when('/', { 
+    templateUrl: 'templates/polls.html', 
     controller: 'PollCtrl'
+  })
+  . when('/about', {
+    templateUrl: 'templates/about.html',
   })
   . when('/polls/create', {
     templateUrl: 'templates/create.html',

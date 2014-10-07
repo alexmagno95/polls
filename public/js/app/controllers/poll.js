@@ -1,23 +1,23 @@
 polls.controller('PollCtrl', [ '$scope', '$routeParams', 'Poll',
 
-function($scope, $routeParams, Poll) {
-  $scope.poll = {};
+  function($scope, $routeParams, Poll) {
+    $scope.poll = {};
 
-$scope.render = function() {
-  ( Poll.get({id: $routeParams.id}) ).$promise.then(function(data) {
-    $scope.poll = data;
-  });
-};
+    $scope.render = function() {
+      ( Poll.get({id: $routeParams.id}) ).$promise.then(function(data) {
+        $scope.poll = data;
+      });
+    };
 
-$scope.renderAll = function() {
-  ( Poll.getAll() ).$promise.then(function(data) {
-    $scope.polls = data;
-  });
-};
+    $scope.renderAll = function() {
+      ( Poll.getAll() ).$promise.then(function(data) {
+        $scope.polls = data;
+      });
+    };
 
-$scope.save = function() {
-  Poll.save({ poll: $scope.poll });
-};
+    $scope.save = function() {
+      Poll.save({ poll: $scope.poll });
+    };
 
-
-}]);
+  }
+]);

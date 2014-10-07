@@ -4,3 +4,64 @@ form legend {
     padding: 10px 0;
 }
 
+.container {
+  width: 600px;
+}
+
+.header {
+  border-bottom: 1px solid #E5E5E5;
+  margin: 20px 0;
+  height: 65px;
+}
+
+.nav.nav-pills li {
+  margin: 10px;
+}
+
+.jumbotron {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.poll-item {
+  border-bottom: 1px solid #E5E5E5;
+  margin-top: 10px;
+  padding: 10px 5px 5px;
+  position: relative;
+}
+
+.poll-item > div > a {
+  text-decoration: none;
+}
+
+.poll-item .title {
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, .3);
+  font-size: .8em;
+  font-weight: bold;
+}
+
+.poll-item .question {
+  line-height: 1.2em;
+  font-size: 1.8em;
+  margin-top: 2px;
+}
+
+.poll-item-right {
+  position: absolute;
+  height: 100%;
+  display: block;
+  right: 10px;
+}
+
+.poll-item .actions {
+  margin: -38px 0;
+  right: 0;
+  position: absolute;
+  text-align: right;
+  top: 50%;
+}
+
+.poll-item .actions a.btn-link {
+  text-decoration: underline;
+}
