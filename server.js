@@ -27,7 +27,7 @@ app.get('/polls', function(req, res) {
 });
 
 app.get('/polls/:id', function(req, res) {
-  models.Poll.find({_id: req.params.id}).exec(function(err, poll) {
+  models.Poll.findOne({_id: req.params.id}).exec(function(err, poll) {
   if(err) { 
     res.status(500).json({}); 
   }
