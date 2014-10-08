@@ -1,10 +1,17 @@
 <div ng-controller="PollCtrl" ng-init="render()"> 
   <h3>{{poll.title}}</h3> 
   <p class="question">{{poll.question}}</p>  
-  <form name="myForm" ng-controller="PollCtrl">
-    <input type="radio" ng-model="poll.choices[0]" ng-value="{{poll.choices[0]}}"> {{poll.choices[0]}} <br/>
-    <input type="radio" ng-model="poll.choices[1]" ng-value="{{poll.choices[1]}}"> {{poll.choices[1]}} <br/>
-    <input type="radio" ng-model="poll.choices[2]" ng-value="{{poll.choices[2]}}"> {{poll.choices[2]}} <br/>
-  </form>
+  <h2>Which is your favorite?</h2>
+   <form>   
+     <div ng-repeat="choice in poll.choices" for="{{choice}}">
+       {{choice}}
+       <input type="radio"
+              ng-model="$parent.poll.choiceSelected"
+              ng-value="choice"
+              id="{{choice}}"
+              name="choice">
+     </div>
+   <div>You chose {{poll.choiceSelected}}</div>
+ </form>
 </div>
 
