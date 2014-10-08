@@ -6,12 +6,17 @@
      <div ng-repeat="choice in poll.choices" for="{{choice}}">
        {{choice}}
        <input type="radio"
-              ng-model="$parent.poll.choiceSelected"
+              ng-model="poll.chosen"
               ng-value="choice"
               id="{{choice}}"
               name="choice">
      </div>
-   <div>You chose {{poll.choiceSelected}}</div>
+     <br/>
+   
  </form>
+ <div ng-controller="VoteCtrl"> 
+  <div>You selected {{poll.chosen}}</div>
+   <button ng-click="save()" class="btn btn-success">Vote</button>
+ </div>
 </div>
 
