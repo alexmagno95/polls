@@ -16,7 +16,7 @@
  </form>
  <div ng-controller="VoteCtrl"> 
   <div>You selected {{poll.chosen}}</div>
-   <button ng-click="save()" class="btn btn-success">Vote</button>
+   <button ng-click="save(poll._id, poll.chosen)" class="btn btn-success">Vote</button>
  </div>
 </div>
 

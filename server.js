@@ -45,40 +45,21 @@ app.post('/polls', function(req, res) {
   });
 });
 
-app.post('/polls/:id/vote', function(req, res) {
-  var vote = new models.Vote(req.body.vote);
-  vote.save(function(err, poll) {
-  if(err) { 
-    res.status(500).json({}); 
-  }
-  res.status(200).json(vote);
-  });
-});
+app.post('/votes/:id/vote', function(req, res) {
+  var data = {
+    "pollId": req.params.id,
+    "chosen": req.body.chosen,
+    "ip": "8.8.8.8"
+  };
 
-app.get('/votes/:pollId',function(req,res){
-  var pollId = req.params.pollId;
-  new Vote().where('pollId', pollId)
-  .fetch()
-  .then(function(vote){
-    res.send(vote.toJSON());
-  }).catch(function(error){
-    console.log(error);
-    res.send('Error retrieving Poll');
-  });
-});
+  var vote = new models.Vote(data);
 
-app.post("/votes/:pollId/:vote", function(req, res) {
-  var vote = new Vote({
-    ip:'123.122.2.5',
-    pollID:req.params.pollId,
-    answer:req.params.vote 
+  vote.save(function(err, vote) {
+    if(err) { 
+      res.status(500); 
+    }
+    res.status(200).json(vote);
   });
-    vote.save().then(function(saved_vote){
-      res.send(saved_vote.toJSON());
-      }).catch(function(error){
-      console.log(error);
-      res.send('Error saving vote');
-    });
 });
 
 app.listen(3000, function() {
