@@ -1,0 +1,9 @@
+<div ng-controller="PollCtrl" ng-init="renderResult()"> 
+  <h3>{{poll.title}}</h3>
+  <p class="question">{{poll.question}}</p>  
+  <form>   
+    <div ng-repeat="vote in votes" for="{{choice}}">
+      {{vote.chosen}} - {{vote.total}}
+    </div>
+  </form>
+</div>
