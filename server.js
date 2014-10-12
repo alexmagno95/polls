@@ -62,6 +62,25 @@ app.post('/votes/:id/vote', function(req, res) {
   });
 });
 
+app.get('/votes/:id', function(req, res) {
+  models.Vote.find({pollId: req.params.id}).exec(function(err, poll) {
+  if(err) { 
+    res.status(500).json({}); 
+  }
+  res.status(200).json(poll);
+  });
+});
+
+app.post('/votes/:id', function(req, res) {
+  models.Vote.find({pollId: '5434edd0ae055b500203b74b'}).remove.exec(function(err) {
+  if(err) { 
+    res.status(500).json({}); 
+  }
+  res.status(200).json({});
+  });
+});
+
+
 app.listen(3000, function() {
   console.log('Express started at port 3000');
 });

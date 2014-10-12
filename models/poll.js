@@ -15,8 +15,6 @@ module.exports = function(mongoose) {
       "default": Date.now
     }
   });
-
   return mongoose.model("Poll", PollSchema);
-
 };
 
