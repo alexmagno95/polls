@@ -1,5 +1,5 @@
 polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote',
-
+//Functions for the Vote model for usage in angularjs
   function($scope, $routeParams, Vote) {
     $scope.vote = {};
 

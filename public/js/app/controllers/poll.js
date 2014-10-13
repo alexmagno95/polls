@@ -1,8 +1,8 @@
 polls.controller('PollCtrl', [ '$scope', '$routeParams', '$q', 'Poll', 'Vote',
-
+//Functions for the Poll model for usage in angularjs
   function($scope, $routeParams, $q, Poll, Vote) {
     $scope.poll = {};
-
+    
     $scope.render = function() {
       ( Poll.get({id: $routeParams.id}) ).$promise.then(function(data) {
         $scope.poll = data;

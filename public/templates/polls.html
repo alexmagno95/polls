@@ -3,7 +3,7 @@
   <p class="lead">Create a question for real people. It very simple!</p>
   <p><a href="#/polls/create" class="btn btn-lg btn-success">Create a New Poll</a></p>
 </div>
-
+<!--Show all the polls-->
 <div class="polls-list" ng-controller="PollCtrl" ng-init="renderAll()">
   <div class="poll-item row" ng-repeat="poll in polls">
     <div class="col-lg-6">
@@ -14,8 +14,8 @@
     </div>
     <div class="col-lg-6 poll-item-right">
       <div class="actions">
-        <a href="#/polls/{{poll._id}}/result" class="btn btn-link">Resultado Parcial</a>
-        <a href="#/polls/{{poll._id}}" class="btn btn-success">Votar</a>
+        <a href="#/polls/{{poll._id}}/result" class="btn btn-link">Partial Result</a>
+        <a href="#/polls/{{poll._id}}" class="btn btn-success">Vote</a>
       </div>
     </div>
   </div>
