@@ -1,6 +1,6 @@
 polls.factory("Poll", ["$resource", function($resource) {
 
-  return $resource("http://localhost:3000/polls/:id", {}, {
+  return $resource("http://enigmatic-plains-6227.herokuapp.com/polls/:id", {}, {
     getAll: {
       method: "GET",
       isArray: true,
