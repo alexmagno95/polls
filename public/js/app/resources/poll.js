@@ -1,14 +1,14 @@
 polls.factory("Poll", ["$resource", function($resource) {
 
-  return $resource("http://agile-depths-4725.herokuapp.com/polls/:id", {}, {
+  return $resource("http://agile-depths-4725.herokuapp.com/polls:"+app.settings.env+"/:id", {}, {
     getAll: {
       method: "GET",
       isArray: true,
-      url: "http://agile-depths-4725.herokuapp.com/polls"
+      url: "http://agile-depths-4725.herokuapp.com:"+app.settings.env+"/polls"
     },
     get: {
       method: "GET",
-      url: "http://agile-depths-4725.herokuapp.com/polls/:id"
+      url: "http://agile-depths-4725.herokuapp.com:"+app.settings.env+"/polls/:id"
     },
   });
 
