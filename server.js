@@ -1,14 +1,11 @@
 //This file provides the RESTful services and is responsible for starting the application
 var express     = require('express');
-var bodyParser  = require('body-parser');
+//var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose'); //an ORM for Mongo
 var _           = require('underscore'); //helper tool to work over objects
 
 var app = express();
-var uristring =
-process.env.MONGOLAB_URI ||
-process.env.MONGOHQ_URL ||
-'mongodb://localhost/test';
+var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/test';
 
 // The http server will listen to an appropriate port, or default to
 // port 5000.
@@ -25,10 +22,8 @@ mongoose.connect(uristring, function (err, res) {
 
 app.use(express.static(require("path").join(__dirname, "public")));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(express.json());
+app.use(express.urlencoded());
 
 var models = {
   Poll: require("./models/poll")(mongoose), 
