@@ -5,11 +5,22 @@ var mongoose    = require('mongoose'); //an ORM for Mongo
 var _           = require('underscore'); //helper tool to work over objects
 
 var app = express();
-var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/mydb';
-mongoose.connect(mongoUri, onMongooseError = function(err) {
-  if (err) { 
-    console.log("erro ao conectar com o bd")
-    throw err; }
+var uristring =
+process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL ||
+'mongodb://localhost/test';
+
+// The http server will listen to an appropriate port, or default to
+// port 5000.
+
+// Makes connection asynchronously.  Mongoose will queue up database
+// operations and release them when the connection is complete.
+mongoose.connect(uristring, function (err, res) {
+  if (err) {
+  console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+  } else {
+  console.log ('Succeeded connected to: ' + uristring);
+  }
 });
 
 app.use(express.static(require("path").join(__dirname, "public")));
