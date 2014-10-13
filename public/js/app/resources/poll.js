@@ -4,11 +4,11 @@ polls.factory("Poll", ["$resource", function($resource) {
     getAll: {
       method: "GET",
       isArray: true,
-      url: "http://localhost:3000/polls"
+      url: "http://enigmatic-plains-6227.herokuapp.com/polls"
     },
     get: {
       method: "GET",
-      url: "http://localhost:3000/polls/:id"
+      url: "http://enigmatic-plains-6227.herokuapp.com/polls/:id"
     },
   });
 

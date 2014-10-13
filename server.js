@@ -57,7 +57,7 @@ app.post('/polls', function(req, res) {
   var poll = new models.Poll(req.body.poll);
   poll.save(function(err, poll) {
   if(err) {
-    res.status(400).json({}); 
+    res.status(500).json({}); 
   }
   res.status(200).json(poll);
   });
