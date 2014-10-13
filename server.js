@@ -36,7 +36,7 @@ var models = {
 app.get('/polls', function(req, res) {
   models.Poll.find().exec(function(err, poll) {
   if(err) { 
-    console.log(erro ao pegar polls)
+    console.log("erro ao pegar polls");
     res.status(500).json([]); 
   }
   res.status(200).json(poll);
