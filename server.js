@@ -5,8 +5,8 @@ var mongoose    = require('mongoose'); //an ORM for Mongo
 var _           = require('underscore'); //helper tool to work over objects
 
 var app = express();
-
-mongoose.connect("mongodb://localhost/poll", onMongooseError = function(err) {
+var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/mydb';
+mongoose.connect(mongoUri, onMongooseError = function(err) {
   if (err) { throw err; }
 });
 
