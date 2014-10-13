@@ -36,7 +36,8 @@ var models = {
 app.get('/polls', function(req, res) {
   models.Poll.find().exec(function(err, poll) {
   if(err) { 
-    res.status(400).json([]); 
+    console.log(erro ao pegar polls)
+    res.status(500).json([]); 
   }
   res.status(200).json(poll);
   });
@@ -46,7 +47,7 @@ app.get('/polls', function(req, res) {
 app.get('/polls/:id', function(req, res) {
   models.Poll.findOne({_id: req.params.id}).exec(function(err, poll) {
   if(err) { 
-    res.status(400).json({}); 
+    res.status(500).json({}); 
   }
   res.status(200).json(poll);
   });
@@ -107,7 +108,7 @@ app.post('/votes/:id/vote', function(req, res) {
 
   vote.save(function(err, vote) {
     if(err) { 
-      res.status(400); 
+      res.status(500); 
     }
     res.status(200).json(vote);
   });
@@ -115,14 +116,14 @@ app.post('/votes/:id/vote', function(req, res) {
 //delete all votes of all polls
 app.delete('/votes', function(req, res) {
   models.Vote.remove(function(err) {
-    if(err) { res.status(400); }
+    if(err) { res.status(500); }
     res.status(200).json({});
   });
 });
 //delete votes for one poll
 app.delete('/votes/:id', function(req, res) {
   models.Vote.remove({ pollId: req.params.id }, function(err) {
-    if(err) { res.status(400); }
+    if(err) { res.status(500); }
     res.status(200).json({});
   });
 });
