@@ -1,6 +1,6 @@
 //This file provides the RESTful services and is responsible for starting the application
 var express     = require('express');
-var bodyParser  = require('body-parser');
+//var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose'); //an ORM for Mongo
 var _           = require('underscore'); //helper tool to work over objects
 
@@ -11,10 +11,7 @@ mongoose.connect("mongodb://localhost/poll", onMongooseError = function(err) {
 });
 
 app.use(express.static(require("path").join(__dirname, "public")));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+
 
 var models = {
   Poll: require("./models/poll")(mongoose), 
