@@ -12,7 +12,9 @@ mongoose.connect("mongodb://localhost/poll", onMongooseError = function(err) {
 
 app.use(express.static(require("path").join(__dirname, "public")));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 var models = {
   Poll: require("./models/poll")(mongoose), 
@@ -114,6 +116,6 @@ app.delete('/votes/:id', function(req, res) {
   });
 });
 //starts the application
-app.listen(3000, function() {
-  console.log('Express started at port 3000');
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
