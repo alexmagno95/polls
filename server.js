@@ -5,7 +5,7 @@ var mongoose    = require('mongoose'); //an ORM for Mongo
 var _           = require('underscore'); //helper tool to work over objects
 
 var app = express();
-var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL;
+var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/poll';
 
 // The http server will listen to an appropriate port, or default to
 // port 5000.
