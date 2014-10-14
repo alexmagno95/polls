@@ -115,6 +115,7 @@ app.delete('/polls', function(req, res) {
     if(err) { res.status(500); }
     res.status(200).json({});
   });
+});
 
 // Delete votes for one poll
 app.delete('/votes/:id', function(req, res) {
