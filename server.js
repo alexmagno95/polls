@@ -5,7 +5,7 @@ var mongoose    = require('mongoose'); //an ORM for Mongo
 var _           = require('underscore'); //helper tool to work over objects
 
 var app = express();
-var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'localhost:27017/teste';
+var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://heroku_app30677516:qjjj00ducm6v70ngu2rt3a0ki9@ds039010.mongolab.com:39010/heroku_app30677516';
 
 // The http server will listen to an appropriate port, or default to
 // port 5000.
