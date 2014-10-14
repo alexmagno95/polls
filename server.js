@@ -122,6 +122,14 @@ app.delete('/polls', function(req, res) {
   });
 });
 
+//Delete poll by id
+app.delete('/polls/:id', function(req, res) {
+  models.Poll.remove({ id: req.params.id }, function(err) {
+    if(err) { res.status(404); }
+    res.status(200).json({});
+  });
+});
+
 // Delete votes for one poll
 app.delete('/votes/:pollId', function(req, res) {
   models.Vote.remove({ pollId: req.params.pollId }, function(err) {
