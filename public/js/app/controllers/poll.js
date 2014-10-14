@@ -1,4 +1,4 @@
-polls.controller('PollCtrl', [ '$scope', '$routeParams', '$q', 'Poll', 'Vote',
+polls.controller('PollCtrl', [ '$scope', '$location', '$routeParams', '$q', 'Poll', 'Vote',
 //Functions for the Poll model for usage in angularjs
   function($scope, $routeParams, $q, Poll, Vote) {
     $scope.poll = {};
@@ -26,6 +26,10 @@ polls.controller('PollCtrl', [ '$scope', '$routeParams', '$q', 'Poll', 'Vote',
         return res;
       });
     };
+
+    $scope.goNext = function (hash) { 
+      $location.path(hash);
+    }
 
     $scope.save = function() {
       Poll.save({ poll: $scope.poll });

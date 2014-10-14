@@ -8,6 +8,7 @@ polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote',
         pollId: poll,
         chosen: chosen
       });
+      $scope.goNext('/polls/'+poll+'/result');
     };  
 
   }
