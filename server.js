@@ -61,6 +61,7 @@ app.post('/polls', function(req, res) {
     res.status(404).json({}); 
     console.log("erro ao salvar polls");
   }
+  res.location('/polls/' + poll._id);
   console.log("sucesso ao salvar polls");
   res.status(201).json(poll);
   });
