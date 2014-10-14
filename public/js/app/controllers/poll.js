@@ -33,6 +33,8 @@ polls.controller('PollCtrl', [ '$scope', '$location', '$routeParams', '$q', 'Pol
 
     $scope.save = function() {
       Poll.save({ poll: $scope.poll });
+      window.alert('Poll Saved');
+      $location.path('/polls/');
     };  
 
   }
