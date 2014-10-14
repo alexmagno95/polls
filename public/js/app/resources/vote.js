@@ -1,14 +1,14 @@
 polls.factory("Vote", ["$resource", function($resource) {
 
-  return $resource("http://agile-depths-4725.herokuapp.com/votes/:pollId", { pollId: '@pollId' }, {
+  return $resource("/votes/:pollId", { pollId: '@pollId' }, {
     get: {
       method: "GET",
       isArray: true,
-      url: "http://agile-depths-4725.herokuapp.com/votes/:id"
+      url: "/votes/:id"
     },
     save: {
       method: "POST",
-      url: "http://agile-depths-4725.herokuapp.com/votes/:pollId/vote"
+      url: "/votes/:pollId/vote"
     }
   });
 

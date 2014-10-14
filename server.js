@@ -1,17 +1,17 @@
-//This file provides the RESTful services and is responsible for starting the application
+// This file provides the RESTful services and is responsible for starting the application
 var express     = require('express');
 var bodyParser  = require('body-parser');
-var mongoose    = require('mongoose'); //an ORM for Mongo
-var _           = require('underscore'); //helper tool to work over objects
+var mongoose    = require('mongoose'); // An ORM for Mongo
+var _           = require('underscore'); // Helper tool to work over objects
 
 var app = express();
-var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://heroku_app30677516:qjjj00ducm6v70ngu2rt3a0ki9@ds039010.mongolab.com:39010/heroku_app30677516';
+var uristring = 'mongodb://alexmagno95:belluga3@ds035750.mongolab.com:35750/polls-angular-db';
 
 // The http server will listen to an appropriate port, or default to
-// port 5000.
+// Port 5000.
 
 // Makes connection asynchronously.  Mongoose will queue up database
-// operations and release them when the connection is complete.
+// Operations and release them when the connection is complete.
 mongoose.connect(uristring, function (err, res) {
   if (err) {
   console.log ('ERROR connecting to: ' + uristring + '. ' + err);
@@ -32,7 +32,7 @@ var models = {
   Vote: require("./models/vote")(mongoose)
 };
 
-//Get all polls
+// Get all polls
 app.get('/polls', function(req, res) {
   models.Poll.find().exec(function(err, poll) {
   if(err) { 
@@ -43,7 +43,7 @@ app.get('/polls', function(req, res) {
   });
 });
 
-//Get poll by id
+// Get poll by id
 app.get('/polls/:id', function(req, res) {
   models.Poll.findOne({_id: req.params.id}).exec(function(err, poll) {
   if(err) { 
@@ -53,7 +53,7 @@ app.get('/polls/:id', function(req, res) {
   });
 });
 
-//Create a poll
+// Create a poll
 app.post('/polls', function(req, res) {
   var poll = new models.Poll(req.body.poll);
   poll.save(function(err, poll) {
@@ -66,22 +66,7 @@ app.post('/polls', function(req, res) {
   });
 });
 
-// app.get('/votes/:id', function(req, res) {
-//   models.Vote.find({ pollId: req.params.id }).exec(function(err, votes) {
-//     if(err) { res.status(500); }
-//     var chosens = [];
-//     _.each(votes, function(vote) {
-//       if(_.indexOf(chosens, vote.chosen) > 0) {
-
-//       } else {
-//         chosens.push({chosen: vote.chosen, total: 1});
-//       }
-//     });
-//     res.status(200).json(votes);
-//   });
-// });
-
-//Get number of votes for each option for a determined poll
+// Get number of votes for each option for a determined poll
 app.get('/votes/:id', function(req, res) {
   models.Vote.find({ pollId: req.params.id }).exec(function(err, votes) {  
     var chosens = [];
@@ -96,7 +81,7 @@ app.get('/votes/:id', function(req, res) {
   });
 });
 
-//Save a vote
+// Save a vote
 app.post('/votes/:id/vote', function(req, res) {
   var data = {
     "pollId": req.params.id,
@@ -115,21 +100,24 @@ app.post('/votes/:id/vote', function(req, res) {
     res.status(200).json(vote);
   });
 });
-//delete all votes of all polls
+
+// Delete all votes of all polls
 app.delete('/votes', function(req, res) {
   models.Vote.remove(function(err) {
     if(err) { res.status(500); }
     res.status(200).json({});
   });
 });
-//delete votes for one poll
+
+// Delete votes for one poll
 app.delete('/votes/:id', function(req, res) {
   models.Vote.remove({ pollId: req.params.id }, function(err) {
     if(err) { res.status(500); }
     res.status(200).json({});
   });
 });
-//starts the application
+
+// Starts the application
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
