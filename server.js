@@ -124,7 +124,7 @@ app.delete('/polls', function(req, res) {
 
 //Delete poll by id
 app.delete('/polls/:id', function(req, res) {
-  models.Poll.remove({ id: req.params.id }, function(err) {
+  models.Poll.remove({ _id: req.params.id }, function(err) {
     if(err) { res.status(404); }
     res.status(200).json({});
   });
