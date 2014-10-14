@@ -68,8 +68,8 @@ app.post('/polls', function(req, res) {
 });
 
 // Get number of votes for each option for a determined poll
-app.get('/votes/:id', function(req, res) {
-  models.Vote.find({ pollId: req.params.id }).exec(function(err, votes) {  
+app.get('/votes/:pollId', function(req, res) {
+  models.Vote.find({ pollId: req.params.pollId }).exec(function(err, votes) {  
     var chosens = [];
 
     _.each(votes, function(vote) {
@@ -87,9 +87,9 @@ app.get('/votes/:id', function(req, res) {
 });
 
 // Save a vote
-app.post('/votes/:id/vote', function(req, res) {
+app.post('/votes/:pollId/vote', function(req, res) {
   var data = {
-    "pollId": req.params.id,
+    "pollId": req.params.pollId,
     "chosen": req.body.chosen,
     "ip": (req.headers['x-forwarded-for'] || '').split(',')[0] || req.connection.remoteAddress
   };
@@ -123,8 +123,8 @@ app.delete('/polls', function(req, res) {
 });
 
 // Delete votes for one poll
-app.delete('/votes/:id', function(req, res) {
-  models.Vote.remove({ pollId: req.params.id }, function(err) {
+app.delete('/votes/:pollId', function(req, res) {
+  models.Vote.remove({ pollId: req.params.pollId }, function(err) {
     if(err) { res.status(404); }
     res.status(200).json({});
   });
