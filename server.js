@@ -37,7 +37,7 @@ app.get('/polls', function(req, res) {
   models.Poll.find().exec(function(err, poll) {
   if(err) { 
     console.log("erro ao pegar polls");
-    res.status(500).json([]); 
+    res.status(404).json([]); 
   }
   res.status(200).json(poll);
   });
@@ -47,7 +47,7 @@ app.get('/polls', function(req, res) {
 app.get('/polls/:id', function(req, res) {
   models.Poll.findOne({_id: req.params.id}).exec(function(err, poll) {
   if(err) { 
-    res.status(500).json({}); 
+    res.status(404).json({}); 
   }
   res.status(200).json(poll);
   });
@@ -58,11 +58,11 @@ app.post('/polls', function(req, res) {
   var poll = new models.Poll(req.body.poll);
   poll.save(function(err, poll) {
   if(err) {
-    res.status(500).json({}); 
+    res.status(404).json({}); 
     console.log("erro ao salvar polls");
   }
   console.log("sucesso ao salvar polls");
-  res.status(200).json(poll);
+  res.status(201).json(poll);
   });
 });
 
@@ -77,6 +77,10 @@ app.get('/votes/:id', function(req, res) {
         chosens.push({chosen: vote.chosen, total: 1});
       }
     });
+    if(err) {
+      res.status(404).json({}); 
+      console.log("erro ao salvar polls");
+    }
     res.status(200).json(chosens);
   });
 });
@@ -95,7 +99,7 @@ app.post('/votes/:id/vote', function(req, res) {
 
   vote.save(function(err, vote) {
     if(err) { 
-      res.status(500); 
+      res.status(404); 
     }
     res.status(200).json(vote);
   });
@@ -104,7 +108,7 @@ app.post('/votes/:id/vote', function(req, res) {
 // Delete all votes of all polls
 app.delete('/votes', function(req, res) {
   models.Vote.remove(function(err) {
-    if(err) { res.status(500); }
+    if(err) { res.status(404); }
     res.status(200).json({});
   });
 });
@@ -112,7 +116,7 @@ app.delete('/votes', function(req, res) {
 //Delete all polls
 app.delete('/polls', function(req, res) {
   models.Poll.remove(function(err) {
-    if(err) { res.status(500); }
+    if(err) { res.status(404); }
     res.status(200).json({});
   });
 });
@@ -120,7 +124,7 @@ app.delete('/polls', function(req, res) {
 // Delete votes for one poll
 app.delete('/votes/:id', function(req, res) {
   models.Vote.remove({ pollId: req.params.id }, function(err) {
-    if(err) { res.status(500); }
+    if(err) { res.status(404); }
     res.status(200).json({});
   });
 });
