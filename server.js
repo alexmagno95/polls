@@ -86,7 +86,7 @@ app.post('/votes/:id/vote', function(req, res) {
   var data = {
     "pollId": req.params.id,
     "chosen": req.body.chosen,
-    "ip": "8.8.8.8"
+    "ip": (req.headers['x-forwarded-for'] || '').split(',')[0] || req.connection.remoteAddress
   };
 
   console.log(req.body);
