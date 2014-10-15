@@ -138,6 +138,14 @@ app.delete('/votes/:pollId', function(req, res) {
   });
 });
 
+// Deletes poll by id
+app.delete('/polls/:id', function(req, res) {
+  models.Poll.remove({ _id: req.params.id }, function(err) {
+    if(err) { res.status(500); }
+    res.status(200).json({});
+  });
+});
+
 // Starts the application
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);

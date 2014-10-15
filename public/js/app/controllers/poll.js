@@ -39,6 +39,14 @@ polls.controller('PollCtrl', [ '$scope', '$location', '$route', '$routeParams', 
       $route.reload();
     };
 
+    $scope.deletePoll = function(id){
+      Poll.delete({ 
+        id: id
+      });
+      window.alert("Vote deleted");
+      $route.reload();
+    };
+
     $scope.save = function() {
       Poll.save({ poll: $scope.poll });
       window.alert('Poll Saved');
