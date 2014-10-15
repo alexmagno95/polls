@@ -19,4 +19,5 @@ polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote', 'Poll',
       $scope.goNext('/polls/');
     };
   }
+  
 ]);
