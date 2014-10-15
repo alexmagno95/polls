@@ -6,6 +6,10 @@ polls.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'templates/polls.html', 
     controller: 'PollCtrl'
   })
+  . when('/polls', {
+    templateUrl: 'templates/polls.html', 
+    controller: 'PollCtrl'
+  })
   . when('/about', {
     templateUrl: 'templates/about.html',
   })
