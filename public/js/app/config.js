@@ -25,5 +25,5 @@ polls.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'templates/vote.html',
     controller: 'VoteCtrl'
   })
-  . otherwise({ redirectTo: '/' });
+  . otherwise({ templateUrl: 'templates/notFound.html' });
 } ]);
