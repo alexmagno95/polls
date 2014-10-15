@@ -11,7 +11,11 @@ polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote',
       $scope.goNext('/polls/'+poll+'/result');
     };  
 
-
+    $scope.clearAll = function(poll){
+      console.log("chegou");
+      Vote.remove({ 
+        pollId: poll
+      });
 
   }
 ]);
