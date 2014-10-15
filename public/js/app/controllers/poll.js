@@ -31,15 +31,14 @@ polls.controller('PollCtrl', [ '$scope', '$location', '$routeParams', '$q', 'Pol
       $location.path(hash);
     }
 
-
     $scope.clearAll = function(poll){
-      Vote.delete({ 
+      console.log("chegou");
+      Vote.remove({ 
         pollId: poll
       });
       window.alert("Votes for this poll cleared");
       $scope.goNext('/polls/');
     };
-
 
     $scope.save = function() {
       Poll.save({ poll: $scope.poll });
