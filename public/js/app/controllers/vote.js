@@ -1,4 +1,4 @@
-polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote',
+polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote', 'Poll',
 //Functions for the Vote model for usage in angularjs
   function($scope, $routeParams, Vote) {
     $scope.vote = {};
@@ -12,9 +12,11 @@ polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote',
     };  
 
     $scope.clearAll = function(poll){
-      console.log("chegou");
-      Vote.remove({ 
+      Vote.delete({ 
         pollId: poll
       });
-  };
+      window.alert("Votes for this poll cleared");
+      $scope.goNext('/polls/');
+    };
+  }
 ]);
