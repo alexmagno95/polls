@@ -16,6 +16,5 @@ polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote',
       Vote.remove({ 
         pollId: poll
       });
-
-  }
+  };
 ]);
