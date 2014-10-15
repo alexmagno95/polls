@@ -6,9 +6,7 @@
       {{vote.chosen}} - {{vote.total}}
     </div>
     <button ng-click="goNext('/polls/'+poll._id)" class="btn btn-back"> Back To Poll</button>
+    <button ng-click="clearAll(poll_.id)" class="btn btn-warning"> Clear Votes</button>
     </div>
   </form>
-</div>
-<div ng-controller="VoteCtrl"> 
-  <button ng-click="clearAll(poll_.id)" class="btn btn-warning"> Clear Votes</button>
 </div>
