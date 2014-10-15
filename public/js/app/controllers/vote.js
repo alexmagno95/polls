@@ -1,6 +1,6 @@
-polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote', 'Poll',
+polls.controller('VoteCtrl', [ '$scope', '$location','$routeParams', 'Vote', 'Poll',
 //Functions for the Vote model for usage in angularjs
-  function($scope, $routeParams, Vote) {
+  function($scope, $location,  $routeParams, Vote) {
     $scope.vote = {};
 
     $scope.save = function(poll, chosen) {
@@ -11,6 +11,10 @@ polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote', 'Poll',
       $scope.goNext('/polls/'+poll+'/result');
     };  
 
+    $scope.goNext = function (hash) { 
+      $location.path(hash);
+    }
+
     $scope.clearAll = function(poll){
       Vote.delete({ 
         pollId: poll
@@ -19,5 +23,5 @@ polls.controller('VoteCtrl', [ '$scope', '$routeParams', 'Vote', 'Poll',
       $scope.goNext('/polls/');
     };
   }
-  
+
 ]);
