@@ -1,6 +1,6 @@
-polls.controller('PollCtrl', [ '$scope', '$location', '$routeParams', '$q', 'Poll', 'Vote',
+polls.controller('PollCtrl', [ '$scope', '$location', '$route', '$routeParams', '$q', 'Poll', 'Vote',
 //Functions for the Poll model for usage in angularjs
-  function($scope, $location, $routeParams, $q, Poll, Vote) {
+  function($scope, $location, $route, $routeParams, $q, Poll, Vote) {
     $scope.poll = {};
     
     $scope.render = function() {
@@ -32,12 +32,11 @@ polls.controller('PollCtrl', [ '$scope', '$location', '$routeParams', '$q', 'Pol
     }
 
     $scope.clearAll = function(poll){
-      console.log("chegou");
       Vote.remove({ 
         pollId: poll
       });
       window.alert("Votes for this poll cleared");
-      $scope.goNext('/polls/');
+      $route.reload();
     };
 
     $scope.save = function() {
