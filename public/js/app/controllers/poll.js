@@ -35,7 +35,7 @@ polls.controller('PollCtrl', [ '$scope', '$location', '$route', '$routeParams', 
       Vote.remove({ 
         pollId: poll
       });
-      window.alert("Votes for this poll cleared");
+      window.alert("Votes for this poll deleted");
       $route.reload();
     };
 
