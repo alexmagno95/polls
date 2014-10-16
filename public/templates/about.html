@@ -1,31 +1,26 @@
 <h1>Alexandre Pereira, 17/10/2014</h1>
 <h2> About this application</h2>
-
-<h3> Technologies used fo the project and motivation </h3>
 </br>
+<h3> Technologies used fo the project and motivation </h3>
 <p> In my Poll application, I decided to use the MEAN stack(fully javascript framework): MongoDB, ExpressJS, AngularJS and Node.js. NodeJS (http://nodejs.org/) is an open source, cross-platform runtime environment for server-side and networking applications. Node.js applications are written in JavaScript, and can be run within the Node.js runtime on OS X, Microsoft Windows and Linux with no changes. MongoDB is a NoSQL and document-oriented database. To make the model mapping with the database, I used Mongoose (http://mongoosejs.com/docs/api.html), that is a Node.js library that provides MongoDB object mapping similar to ORM with a familiar interface within Node.js. ExpressJS is  is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. Angularjs I think I don't need to explain :). I thought that it was a good oportunity to learn a new way of doing web applications. Because I am new to this technology, I faced some problems and I did not have time to implement the PUT for polls. However, I made all the others RESTful web services, including POST and DELETE for Poll model. 
 </p>
-
-<h3> Benefits and disadvantages of this approach </h3>
 </br>
+<h3> Benefits and disadvantages of this approach </h3>
 <p>
 I think this approach is much more beneficial than disadvantageous. Making RESTful webservices with Node.js is much simpler than making it with php, for example. Just by using 'app = express()', it is possible to use the variable app to create RESTful webservices. I think that mongoDB is much simpler than relational databases like MySQL and PostgreSQL. In the code, you can see how easily I fetched and saved documents. On the other hand, I think the major disadvantage is to deploy the application. I got some unexpected problems(probably because I'm not experient with this technology) when doing the application and had to put it in another server to not loose more time.
 </p>
-
-<h3> File structure and html files overview </h3>
 </br>
+<h3> File structure and html files overview </h3>
 <p>
 In this project, in the root directory, there are the server.js file that is responsible for provide the RESTful services, package.json that contains the dependencies of the project. I put my the models in a directory 'models'. In the directory public, I put the index.html file as well as the 'css' directory, that has the styles for this app and the directory 'js', that contains the controllers and resourses directories. In the directory vendor, I put the external javascript necessary for the angujarjs. In the directory templates, there are the html files. In the about.html, there is the description of the system. In the create.html, there is the form that receives the informations to create a poll and save it. In the poll.html file, a single poll with its options is shown. Also, in this file, we get informations to save a vote. In polls.html, we have all the polls with a link to each one, as well as a link to the current results and another link to delete a single poll for each poll.
 </p>
-
-<h3> Design decisions and other considerations </h3>
 </br>
+<h3> Design decisions and other considerations </h3>
 <p>
 For this application, for the css, I used Bootstrap. For the server.js file, I included a dependency that helps to manipulate objects, the underscore.js (http://underscorejs.org/). In the creation of a poll, for sake of simplicity, I fixed the number the options to five. I included comments where I think it is necessary to make the code clearer.
 </p>
-
-<h3> Final considerations </h3>
 </br>
+<h3> Final considerations </h3>
 <p>
 In this project, I have a lot of work to do and many problems because these are new technologies to me, but I am feeling happy because I learnt a lot in the javascript programming on this assignment. Furthermore, I found very interesting working with a NoSQL database like mongoDB. If you type some strange angular path on the, you will go to this page <a href="http://polls-angular-assignment.herokuapp.com/#/notFound">Ninjas everywhere</a>
 </p>
