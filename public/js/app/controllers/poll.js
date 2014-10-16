@@ -1,11 +1,14 @@
-polls.controller('PollCtrl', [ '$scope', '$location', '$route', '$routeParams', '$q', 'Poll', 'Vote',
+polls.controller('PollCtrl', [ '$scope', '$location', '$route', '$routeParams', '$q', '$timeout', 'Poll', 'Vote',
 //Functions for the Poll model for usage in angularjs
-  function($scope, $location, $route, $routeParams, $q, Poll, Vote) {
+  function($scope, $location, $route, $routeParams, $q, $timeout, Poll, Vote) {
     $scope.poll = {};
     
     $scope.render = function() {
       ( Poll.get({id: $routeParams.id}) ).$promise.then(function(data) {
         $scope.poll = data;
+        $timeout(function() {
+          renderChoice();
+        });
       });
     };
 
@@ -25,6 +28,19 @@ polls.controller('PollCtrl', [ '$scope', '$location', '$route', '$routeParams', 
       $scope.data = $q.all([ votes, poll ]).then(function(res) {
         return res;
       });
+
+      votes.$promise.then(function(data) {
+        $scope.total = _.reduce(data, function(memo, vote) {
+          return parseInt(memo) + parseInt(vote.total);
+        }, 0);
+      });
+
+      $timeout(function() {
+        $('.bar').each(function(i, elem){
+          drawBar(elem);
+        });
+      }, 1000)
+
     };
 
     $scope.goNext = function (hash) { 

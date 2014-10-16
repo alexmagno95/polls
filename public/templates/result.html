@@ -1,10 +1,13 @@
 <div ng-controller="PollCtrl" ng-init="renderResult()"> 
   <h3>{{poll.title}}</h3>
   <p class="question">{{poll.question}}</p>  
-  <form>   
-    <div ng-repeat="vote in votes" for="{{choice}}">
-      {{vote.chosen}} - {{vote.total}}
-    </div>
+  <form>
+    <section class="data">
+      <div class="bar-wrap" ng-repeat="vote in votes" for="{{choice}}">
+        <label>{{vote.chosen}}</label>
+        <div class="bar blue" data-percentage="{{vote.total}}"></div>
+      </div>
+    </section>
     <button ng-click="goNext('/polls/'+poll._id)" class="btn btn-back"> Back To Poll</button>
     <button ng-click="clearAll(poll_.id)" class="btn btn-danger"> Reset Votes</button>
     </div>

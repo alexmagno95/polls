@@ -8,6 +8,9 @@
     <script src="js/vendor/angular/angular-route.js"></script>
     <script src="js/vendor/angular/angular-resource.js"></script>
 
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/underscore.js"></script>
+
     <script src="js/app/config.js"></script>
 
     <script src="js/app/resources/poll.js"></script>
@@ -32,5 +35,42 @@
 
       <ng-view></ng-view>
     </div>
+    <script>
+
+      function renderChoice() {
+
+        $('.radioholder').each(function(){
+          $(this).children().hide();
+          var description = $(this).children('label').html();
+          $(this).append('<span class="desc">'+description+'</span>');
+          $(this).prepend('<span class="tick"></span>');
+          // on click, update radio boxes accordingly
+          $(this).click(function(){
+            $(this).children('input').prop('checked', true);
+            $(this).children('input').trigger('change');
+          });
+        });
+
+        $('input[type=radio]').change(function() {
+          $('input[type=radio]').each(function() {
+            if($(this).prop('checked') == true) {   
+              $(this).parent().addClass('activeradioholder');
+            }
+            else $(this).parent().removeClass('activeradioholder');
+          });
+        });
+
+        $('input[type=radio]').change();
+      };
+  
+      function drawBar(bar) {
+        var percentage = $(bar).data('percentage');
+        if(percentage > 10){
+          percentage = 10;
+        }
+        $(bar).animate({'width': (percentage * 10) + '%'}, 'slow');
+      };
+
+    </script>
   </body> 
 </html>

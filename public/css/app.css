@@ -21,6 +21,11 @@ form legend {
 .jumbotron {
   margin-top: 40px;
   text-align: center;
+  border-radius: 0;
+}
+
+.btn {
+  border-radius: 0;
 }
 
 .poll-item {
@@ -64,4 +69,173 @@ form legend {
 
 .poll-item .actions a.btn-link {
   text-decoration: underline;
+}
+
+.radioholder {
+  width: 48%;
+  background: #fff;
+  margin-bottom: 1em;
+  font-size: 1.3em;
+  height: 2.4em;
+  color: #666;
+  -o-transition: .1s ease-out;
+  -ms-transition: .1s ease-out;
+  -moz-transition: .1s ease-out;
+  -webkit-transition: .1s ease-out;
+  transition: .1s ease-out;
+  cursor: pointer;
+}
+
+
+.activeradioholder {
+  background: #39A9A4;
+  color: #fff;
+}
+
+.radioholder .desc {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: .6em;
+  line-height: 2.4em;
+}
+
+.radioholder .tick {
+  display: inline-block;
+  vertical-align: middle;
+  width: 2.4em;
+  height: 100%;
+  background-color: #eee;
+  background-image: none;
+  -o-transition: .1s ease-out;
+  -ms-transition: .1s ease-out;
+  -moz-transition: .1s ease-out;
+  -webkit-transition: .1s ease-out;
+  transition: .1s ease-out;
+}
+
+.activeradioholder .tick {
+  background-color: #2A817C;
+  background-image: url('http://supereightstudio.com/img/radio_tick.png');
+  background-size: cover;
+}
+
+.radioholder:nth-child(odd) {
+  float: left;
+}
+
+.radioholder:nth-child(even) {
+  float: right;
+}
+
+.radioholder:hover {
+  background-color: #eee;
+}
+
+.radioholder:hover .tick {
+  background-color: #ddd;
+}
+
+.activeradioholder:hover {
+  background-color: #39A9A4;
+}
+
+.activeradioholder:hover .tick {
+  background-color: #2A817C;
+}
+
+.choices {
+  margin: 60px 0 30px 0;
+  overflow: auto;
+}
+
+.poll-vote h3 {
+  font-size: 1.2em;
+  background: #39A9A4;
+  padding: 6px 12px;
+  display: inline-block;
+  color: white;
+}
+
+.poll-vote .question {
+  font-size: 2em;
+}
+
+.poll-vote .actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.poll-vote .btn.btn-lg {
+  border-radius: 0;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+section.data {
+  position: relative;
+  overflow: hidden;
+  padding: 0 0 30px 0;
+  margin: 0 0 40px 0;
+}
+section.data div.measure {
+  position: absolute;
+  height: 100%;
+  border-right: 2px dashed #888;
+  margin: 0 0 35px 0;
+}
+
+div.bar-wrap {
+  width: 100%;
+  display: block;
+  margin: 0 0 20px 0;
+  overflow: hidden;
+}
+div.bar-wrap label {
+  font-size: 0.8em;
+  color: #8a8a8a;
+  text-transform: uppercase;
+  margin: 0 0 2px 0;
+  display: block;
+}
+div.bar-wrap div.bar {
+  height: 40px;
+  width: 0;
+  position: relative;
+}
+div.bar-wrap div.bar:after {
+  content: attr(data-percentage);
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  padding: 10px;
+}
+div.bar-wrap div.bar.blue {
+  background-color: #61a7c4;
+  border-bottom: 3px solid #4290b0;
+}
+div.bar-wrap div.bar.blue:after {
+  color: #FFF;
+}
+div.bar-wrap div.bar.green {
+  background-color: #61c471;
+  border-bottom: 3px solid #42b054;
+}
+div.bar-wrap div.bar.green:after {
+  color: #FFF;
+}
+div.bar-wrap div.bar.red {
+  background-color: #c46161;
+  border-bottom: 3px solid #b04242;
+}
+div.bar-wrap div.bar.red:after {
+  color: #FFF;
+}
+div.bar-wrap div.bar.purple {
+  background-color: #a461c4;
+  border-bottom: 3px solid #8d42b0;
+}
+div.bar-wrap div.bar.purple:after {
+  color: #FFF;
 }

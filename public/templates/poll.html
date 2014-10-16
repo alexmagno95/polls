@@ -1,24 +1,16 @@
 <!--List the poll with its choices-->
-<div ng-controller="PollCtrl" ng-init="render()"> 
+<div class="poll-vote" ng-controller="PollCtrl" ng-init="render()"> 
   <h3>{{poll.title}}</h3> 
-  <p class="question">{{poll.question}}</p>  
-  <h2>Which is your favorite?</h2>
-   <form name="choices">   
-     <div ng-repeat="choice in poll.choices track by $index" for="{{choice}}">
-       {{choice}}
-       <input type="radio"
-              ng-model="poll.chosen"
-              ng-value="choice"
-              id="{{choice}}"
-              name="choice"
-              ng-required="true">
-     </div>
-     <br/>
-   
- </form>
- <div ng-controller="VoteCtrl"> 
-  <div>You selected {{poll.chosen}}</div>
-   <button ng-click="save(poll._id, poll.chosen)" class="btn btn-success" ng-disabled="choices.$invalid">Vote</button>
- </div>
+  <p class="question">{{poll.question}}</p>
+  <form>
+    <div class="choices">
+      <div class="radioholder" ng-repeat="choice in poll.choices track by $index">
+        <input type="radio" ng-value="choice" ng-model="poll.chosen" ng-required="true" id="{{choice}}" name="choice">
+        <label for="{{choice}}">{{choice}}</label>
+      </div>
+    </div>
+    <div class="actions" ng-controller="VoteCtrl"> 
+      <button ng-click="save(poll._id, poll.chosen)" class="btn btn-success btn-lg" ng-disabled="choices.$invalid">Vote</button>
+    </div>
+  </form>
 </div>
-
