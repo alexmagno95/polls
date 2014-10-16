@@ -3,21 +3,22 @@
   <h3>{{poll.title}}</h3> 
   <p class="question">{{poll.question}}</p>  
   <h2>Which is your favorite?</h2>
-   <form>   
+   <form name="choices">   
      <div ng-repeat="choice in poll.choices track by $index" for="{{choice}}">
        {{choice}}
        <input type="radio"
               ng-model="poll.chosen"
               ng-value="choice"
               id="{{choice}}"
-              name="choice">
+              name="choice"
+              ng-required="true">
      </div>
      <br/>
    
  </form>
  <div ng-controller="VoteCtrl"> 
   <div>You selected {{poll.chosen}}</div>
-   <button ng-click="save(poll._id, poll.chosen)" class="btn btn-success">Vote</button>
+   <button ng-click="save(poll._id, poll.chosen)" class="btn btn-success" ng-disabled="choices.$invalid">Vote</button>
  </div>
 </div>
 

@@ -1,28 +1,28 @@
-<h1>Alexnadre Pereira, 13/10/2014</h1>
-<h2> About this application</h2>
+<h1>Alexandre Pereira, 17/10/2014</h1>
+<h2>About this application</h2>
 
-<h3> Technologies used fo the project and motivation </h3>
+<h4> Technologies used fo the project and motivation </h4>
 <p> In my Poll application, I decided to use the MEAN stack(fully javascript framework): MongoDB, ExpressJS, AngularJS and Node.js. NodeJS is an open source, cross-platform runtime environment for server-side and networking applications. Node.js (http://nodejs.org/) applications are written in JavaScript, and can be run within the Node.js runtime on OS X, Microsoft Windows and Linux with no changes. MongoDB is a NoSQL and document-oriented database. To make the model mapping with the database, I used Mongoose (http://mongoosejs.com/docs/api.html), that is a Node.js library that provides MongoDB object mapping similar to ORM with a familiar interface within Node.js. ExpressJS is  is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. Angularjs I think I don't need to explain :). I thought that it was a good oportunity to learn a new way of doing web applications. Because I am new to this technology, I faced some problems, I could not make the PUT for polls. However, I made all the others RESTful web services, including POST and DELETE for Poll model. 
 </p>
 
-<h3> Benefits and disadvantages of this approach </h3>
+<h4> Benefits and disadvantages of this approach </h4>
 <p>
 I think this approach is much more beneficial than disadvantageous. Make a RESTful webservices with nodejs is much simpler than making it with php, for example. Just by using 'app = express()', it is possible to create RESTful webservices. I think that mongoDB is much simpler than relational databases like MySQL and PostgreSQL. In the code, you can see how easily I fetched documents. On the other hand, I think the major disadvantage is to deploy the application on the UC labs. To make the deploy, I used the Heroku cloud application plataform and the MongoLab to put the mongoDB databese available.
 </p>
 
 
-<h3> File structure overview </h3>
+<h4> File structure overview </h4>
 <p>
 In this project, in the root directory, there are the server.js file that is responsible for provide the RESTful services, package.json that contains the dependencies of the project. I put my the models in a directory 'models'. In the directory public, I put the index.html file as well as the css directory, that has the styles for this app, the directory js, that contains the controllers and resourses directories. In the directory vendor, I put the external javascript necessary for the angujarjs. In the directory templates, there are the html files. In the about.html, there is the description of the system. In the create.html, we have the page that receive the informations to create a poll and save it. In the poll.html file, a single poll with its option is shown. Also, in this file, we get informations to save a vote. In polls.html, we have all the polls with a link to each one, as well as a link to the current results for each one. 
 </p>
 
 
-<h3> Other considerations </h3>
+<h4> Other considerations </h4>
 <p>
 For this application, for the css, I used bootstrap. For the server.js file, I included a dependency that helps to manipulate objects, the underscore.js. More information about this js library, visit this site: http://underscorejs.org/. In the creation of a poll, for sake of simplicity, I fixed the number the options to four. I included comments where I think it is necessary to make the code clearer.
 </p>
 
-<h3> Final considerations </h3>
+<h4> Final considerations </h4>
 <p>
 In this project, I have a lot of work to do and many problems because these are new technologies to me, but I am feeling happy because I learnt a lot in the javascript programming on this assignment. Furthermore, I found very interesting working with a NoSQL database like mongoDB.
 </p>
