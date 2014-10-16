@@ -1,10 +1,11 @@
 // This file provides the RESTful services and is responsible for starting the application
 var express     = require('express');
-var bodyParser  = require('body-parser');
+var bodyParser  = require('body-parser');// body parsing middleware
 var mongoose    = require('mongoose'); // An ORM for Mongo
 var _           = require('underscore'); // Helper tool to work over objects
 
 var app = express();
+//URI to  access the mongoDB database
 var uristring = 'mongodb://alexmagno95:belluga3@ds035750.mongolab.com:35750/polls-angular-db';
 
 // The http server will listen to an appropriate port, or default to
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+//Initialize models
 var models = {
   Poll: require("./models/poll")(mongoose), 
   Vote: require("./models/vote")(mongoose)
@@ -93,11 +95,8 @@ app.post('/votes/:pollId/vote', function(req, res) {
     "chosen": req.body.chosen,
     "ip": (req.headers['x-forwarded-for'] || '').split(',')[0] || req.connection.remoteAddress
   };
-
   console.log(req.body);
-
   var vote = new models.Vote(data);
-
   vote.save(function(err, vote) {
     if(err) { 
       res.status(404); 
@@ -114,17 +113,9 @@ app.delete('/votes', function(req, res) {
   });
 });
 
-//Delete all polls
+//Delete all polls - used for testing only
 app.delete('/polls', function(req, res) {
   models.Poll.remove(function(err) {
-    if(err) { res.status(404); }
-    res.status(200).json({});
-  });
-});
-
-//Delete poll by id
-app.delete('/polls/:id', function(req, res) {
-  models.Poll.remove({ _id: req.params.id }, function(err) {
     if(err) { res.status(404); }
     res.status(200).json({});
   });
@@ -141,7 +132,7 @@ app.delete('/votes/:pollId', function(req, res) {
 // Deletes poll by id
 app.delete('/polls/:id', function(req, res) {
   models.Poll.remove({ _id: req.params.id }, function(err) {
-    if(err) { res.status(500); }
+    if(err) { res.status(404); }
     res.status(200).json({});
   });
 });
