@@ -1,8 +1,7 @@
 <!--List the poll with its choices-->
 <div ng-controller="PollCtrl" ng-init="render()"> 
   <h3>{{poll.title}}</h3> 
-  <p class="question">{{poll.question}}</p>  
-  <h2>Which is your favorite?</h2>
+  <h2>{{poll.question}}</h2>
    <form name="choices">   
      <div ng-repeat="choice in poll.choices track by $index" for="{{choice}}">
        {{choice}}
