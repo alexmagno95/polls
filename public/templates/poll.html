@@ -4,7 +4,7 @@
   <h2>{{poll.question}}</h2>
    <form name="choices">   
      <div ng-repeat="choice in poll.choices track by $index" for="{{choice}}">
-       {{choice ?}}
+       {{choice}}
        <input type="radio"
               ng-model="poll.chosen"
               ng-value="choice"
