@@ -41,6 +41,7 @@ app.get('/polls', function(req, res) {
     console.log("erro ao pegar polls");
     res.status(404).json([]); 
   }
+  console.log("Deu certo, sqn");
   res.status(200).json(poll);
   });
 });
